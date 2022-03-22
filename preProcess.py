@@ -4,8 +4,6 @@ import os
 import pickle
 import sys
 
-import pdfplumber
-
 #pymupdf
 import fitz
 
