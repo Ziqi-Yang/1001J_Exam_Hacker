@@ -29,5 +29,5 @@ if __name__ == '__main__':
     preProcess()
     DATA = loadData()
     server = Server(DATA)
-    server.search("When You Are Old",["so"],bestN=1,mustIncludeSubKey=False)
+    server.search("When You Are Old",["soft"],bestN=1,mustIncludeSubKey=False)
     server.run(debug=True)
