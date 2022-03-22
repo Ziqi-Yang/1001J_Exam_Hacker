@@ -34,6 +34,7 @@ pip install -r ./requirements.txt
 python main.py
 ```
 
+然后浏览器会默认打开`http://127.0.0.1:5000`,请你更改地址为`http://127.0.0.1:5000/hack`
 
 
 
