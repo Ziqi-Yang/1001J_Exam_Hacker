@@ -1,0 +1,113 @@
+html {
+font-family: arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+}
+
+h1 {
+/* margin-bottom: 1em; */
+color: #353232;
+font-size: 3em;
+font-weight: bold;
+margin-top: 0px;
+margin-bottom: 0;
+text-shadow: #816c70 1px 0 10px;
+}
+
+.container {
+    /* padding: .5em; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+
+.singleResult {
+    margin-bottom: 1em;
+    padding: .3em .8em;
+    flex-basis: 46%;
+    background-color: #f4efe1;
+    color: hsl(210,8%,20%);
+    box-shadow: 1px 1px 2px rgb(0 0 0 / 13%);
+    border-radius: .8em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.key {
+    padding: .1em .2em;
+    border-radius: .3em;
+    color: #816c70;
+    background-color: #e2d8bc;
+    margin: .1em;
+}
+
+.information {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.file {
+    color: #816c70;
+    font-weight: 600;
+}
+
+.score {
+    color: #c72b3ace;
+    font-weight: 600;
+}
+
+.progress > span.back::before {
+    content: "◃";
+    cursor: pointer;
+}
+
+.progress > span.forward::before {
+    content: "▹";
+    cursor: pointer;
+}
+
+.progress > span.total{
+    color: rgb(73, 69, 69);
+    font-weight: bold;
+}
+
+.progress > span.current {
+    color: #695b5e;
+    font-weight: bolder;
+}
+
+
+
+
+
+.resultArea {
+    border: dotted;
+    padding: .3em .4em;
+    border-radius: .6em;
+    background-color: #f8f5ec;
+}
+
+.resultArea::before {
+    content: "\00A0\00A0";
+}
+
+
+.highlight {
+    padding: 0 .2em;
+    border-radius: .3em;
+    color: #816c70;
+    background-color: #e2d8bc;
+    font-weight: bold;
+}

@@ -108,7 +108,9 @@ class PreProcessor:
                         f.write(image["image"])
                     # 对导出图片执行OCR操作
                     text = self.ocr(imageFile)
-                    imageText += text + "\n"
+                    text = text.strip()
+                    if text != "":
+                        imageText += text + "\n"
                 content[pageIndex] = imageText + page.get_text()
                 pageIndex += 1
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Questions</title>
+    <link rel="stylesheet" href="../static/allQuestions.css">
+</head>
+<body>
+    <h1>All Questions</h1>
+    <div class="questionsContainer">
+        {{questionsCollector | safe}}
+    </div>
+<script>
+    $(".submitAnswerButton").click(function(){
+        qhash = $(this).attr("data-qhash");
+        answer = $(this).prev().val();
+
+        data = {
+            qhash: qhash,
+            option: answer
+        };
+        $.ajax(
+            {
+                type: "post",
+                // NOTICE 修改api地址
+                url: "/attempt",
+                cache: false,
+                data: JSON.stringify(data),
+                contentType: "application/json;charset=utf-8",
+                async: false,
+                success: function(data){
+                    if (data == "has attempted") {
+                        alert("只能提交一次哦!");
+                    }
+                }
+            }
+        );
+    });
+
+    $(".showAnswer").click(function(){
+        qhash = $(this).parents(".question").attr("id");
+        $.get(`/preAttempts/${qhash}`,function(data){
+            // console.log(data);
+            res = "选项: 选择人数\n";
+            submitNum = 0;
+            if (typeof(data) == "string"){
+                res = "提交人数未满4人，不显示答案"
+            } else { // json
+                for (var key in data){
+                    submitNum += data[key];
+                    res += `${key}: ${data[key]}\n`;
+                }
+                if (submitNum < 4){
+                    res = "提交人数未满4人，不显示答案"
+                }
+            }
+            alert(res);
+        });
+    });
+</script>
+</body>
+</html>

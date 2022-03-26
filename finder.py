@@ -12,7 +12,7 @@ class Finder:
         self.DATA = data
 
 
-    def find(self,keyWord:str,subKeywords=[],mustIncludeSubKey=True,bestN=None):
+    def find(self,keyWord:str,subKeywords=[],mustIncludeSubKey=True,bestN=6):
         """
         不区分大小写
 

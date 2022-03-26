@@ -1,0 +1,106 @@
+html {
+font-family: arial, sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+}
+
+h1 {
+/* margin-bottom: 1em; */
+color: #353232;
+font-size: 3em;
+font-weight: bold;
+margin-top: 0px;
+margin-bottom: 0;
+/* margin-left: .2em; */
+text-shadow: #816c70 1px 0 10px;
+}
+
+.questionsContainer {
+    margin-left: 1em;
+}
+
+.question {
+    padding: .2em 1em;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+}
+
+.origin {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.originTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.question {
+    transition:background-color .05s linear;
+}
+
+
+.question h2 {
+    margin: 0 1em 0 0;
+}
+
+.questionTitle::before {
+    content: "\00A0\00A0";
+}
+
+button.showAnswer{
+    padding: 0 .2em;
+    border-radius: .3em;
+    border-width: .1em;
+    color: #8d7b7e;
+    background-color: #e7dfca;
+    margin: 0 1em;
+    cursor: pointer;
+}
+
+.submitAnswer{
+    font-size: .5em;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+}
+
+.submitAnswer > * {
+    margin-right: 1em;
+}
+
+.submitAnswer button {
+    font-weight: normal;
+}
+
+.submitAnswer span{
+    font-style: italic;
+    font-size: .3em;
+    font-weight: normal;
+}
+
+div .search{
+    flex-basis: 40%;
+}
+
+
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+div .submitButton{
+    display: flex;
+    justify-content: center;
+}

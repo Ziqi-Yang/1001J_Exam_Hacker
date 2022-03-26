@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../static/resultPageStyle.css">
+  <title>Result Page</title>
+</head>
+<body>
+  <h1>Result</h1>
+  <div class="container">
+    <div class="singleResult">
+      <div class="searchKeys">
+        <span style="font-weight: bold;">主:</span><span class="key">landscape</span>
+        <span style="font-weight: bold;">次:</span><span class="key">asdadas</span><span class="key">asdasda</span><span class="key">asd</span>
+      </div>
+      <div class="information">
+        <span class="file" title="文件">w1/Live Hour 1 ...(.pdf) - P28</span>
+        <span class="score" title="得分">0.75</span>
+        <span class="progress" title="进度">
+          <span class="back" title="上一个结果"></span>
+          <span class="current">1</span>/<span class="total">6</span>
+          <span class="forward" title="下一个结果"></span>
+        </span>
+      </div>
+      <div class="resultArea">
+        During the glacial period [the Ice Age] in Ireland, the island was covered with layers of ice that could be 1km thick. As this ice began to melt, slow-moving glaciers physically carved [cut up] the <span class="highlight">landscape</span>. The monastery of Glendalough is situated in a glacial valley in county Wicklow. The monastery itself (its churches and round tower) was founded [built] on a glacial deposit of hard earth, soil and gravel [small stones]. This earth was originally dug up and pushed before a glacier as it passed through this <span class="highlight">landscape</span>. What is the name given to these deposits of earth left behind by glaciers?
+      </div>
+    </div>
+
+    <div class="singleResult">
+      <div class="searchKeys">
+        <span style="font-weight: bold;">主:</span><span class="key">landscape</span>
+        <span style="font-weight: bold;">次:</span><span class="key">asdadas</span><span class="key">asdasda</span><span class="key">asd</span>
+      </div>
+      <div class="information">
+        <span class="file" title="文件">w1/Live Hour 1 BDIC Course Structure and MCQ instructions.pdf</span>
+        <span class="score" title="得分">0.75</span>
+        <span class="progress" title="进度">
+          <span class="back" title="上一个结果"></span>
+          <span class="current">1</span>/<span class="total">6</span>
+          <span class="forward" title="下一个结果"></span>
+        </span>
+      </div>
+      <div class="resultArea">
+        During the glacial period [the Ice Age] in Ireland, the island was covered with layers of ice that could be 1km thick. As this ice began to melt, slow-moving glaciers physically carved [cut up] the <span class="highlight">landscape</span>. The monastery of Glendalough is situated in a glacial valley in county Wicklow. The monastery itself (its churches and round tower) was founded [built] on a glacial deposit of hard earth, soil and gravel [small stones]. This earth was originally dug up and pushed before a glacier as it passed through this <span class="highlight">landscape</span>. What is the name given to these deposits of earth left behind by glaciers?
+      </div>
+    </div>
+
+    <div class="singleResult">
+      HELLO
+    </div>
+
+    <div class="singleResult">
+      hello
+    </div>
+  </div>
+
+  <script>
+    $("span.back").click(function(){
+      singleResultDiv = $(this).parents("div.singleResult");
+      console.log(singleResultDiv);
+    });
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 import pickle
 import sys
 import os
-# from preProcess import PreProcessor
+from preProcess import PreProcessor
 from server import Server
 
 rootDir = sys.path[0]
@@ -26,8 +26,8 @@ def loadData():
 
 
 if __name__ == '__main__':
-    # preProcess()
+    preProcess()
     DATA = loadData()
     server = Server(DATA)
-    server.search("When You Are Old",["soft"],bestN=1,mustIncludeSubKey=False)
+    server.search("cooking",["pots","site"],bestN=1,mustIncludeSubKey=False)
     server.run(debug=True)
