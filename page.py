@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from markupsafe import Markup
 from flask import render_template
+import re
 
 class Page:
     all_questions_html = "allQuestions.html"
@@ -126,6 +127,31 @@ class Page:
         """
         result Page
         """
+
+        def generateContent(raw:str,keys:list[str]):
+            """
+            为了防止用于刚亮的html代码被替换，先使用特殊字符占位，最后再替换这些特殊字符
+            """
+            substitution = {
+                "#$%0%$#": "<span class='highlight'>",
+                "#$%1%$#": "</span>"
+            }
+            substitutionKeys = list(substitution.keys())
+
+            # re.sub对于开头和结尾的字符串根据之后规则匹配不完全，故此处需要hack
+            content = f"#{raw}#"
+            for key in keys:
+                content = re.sub(rf"(\W+)({re.escape(key)})(\W+)",rf"\g<1>{substitutionKeys[0]}\g<2>{substitutionKeys[1]}\g<3>",content,flags=re.I) # 忽略大小写
+            content = content[1:-1]
+            for key in substitutionKeys:
+                content = content.replace(key,substitution[key])
+            return content
+
+        def genSingleResultDiv():
+            pass
+
+
+
 
 
 if __name__ == '__main__':

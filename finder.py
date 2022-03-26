@@ -28,26 +28,24 @@ class Finder:
         """
         result = []
         score = 0
-        keyWord = keyWord.lower()
         for dn in self.DATA.keys():
             for fn in self.DATA[dn].keys():
                 for p in self.DATA[dn][fn].keys():
-                    contentOrigin = self.DATA[dn][fn][p]
-                    content = contentOrigin.lower()
-                    # if keyWord in content:
-                    if re.search(rf"\W+{keyWord}\W+",content) != None or content.startswith(keyWord) or content.endswith(keyWord):
+                    # re.search对于开头和结尾的字符串根据之后规则匹配不完全，故此处需要hack
+                    content = f"#{self.DATA[dn][fn][p]}#"
+                    if re.search(rf"\W+{re.escape(keyWord)}\W+",content,re.I) != None:
                         for key in subKeywords:
                             key = key.lower()
-                            # if key in content:
-                            if re.search(rf"\W+{key}\W+",content) != None or content.startswith(key) or content.endswith(key):
+                            if re.search(rf"\W+{re.escape(key)}\W+",content,re.I) != None:
                                 score += 1/len(subKeywords)
                         if len(subKeywords) == 0:
                             score = 1
 
                         score = round(score,2)
-                        result.append((score,dn,fn,p,contentOrigin))
-
+                        result.append((score,dn,fn,p,content))
                         score = 0
+
+                    content = content[1:-1]
 
         result = sorted(result,key=lambda x:x[0], reverse=True)
         if mustIncludeSubKey == True:
@@ -72,4 +70,4 @@ if __name__ == '__main__':
     finder = Finder(DATA)
 
     from pprint import pprint
-    pprint(finder.find("When You Are Old",["so"],bestN=1,mustIncludeSubKey=False))
+    pprint(finder.find("When You Are Old",["soft","ie"],bestN=4,mustIncludeSubKey=False))
