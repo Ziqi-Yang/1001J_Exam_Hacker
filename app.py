@@ -8,7 +8,7 @@ from page import Page
 from questionExtractor import QuestionExtractor
 from flask import Flask, request, url_for, redirect, render_template, jsonify, session
 
-dataPath = "/home/zarkli/Documents/programme/python/1001J-exam-hacker/DATA.pkl"
+dataPath = "DATA.pkl"
 
 def loadData():
     with open(dataPath, "rb") as f:
