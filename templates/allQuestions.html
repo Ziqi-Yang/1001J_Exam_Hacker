@@ -42,12 +42,12 @@
         );
     });
 
+    minShowAnswerNum = 4; // 在外部设置方便控制台后期设置
     $(".showAnswer").click(function(){
         qhash = $(this).parents(".question").attr("id");
         $.get(`/preAttempts/${qhash}`,function(data){
             // console.log(data);
             res = "选项: 选择人数\n";
-            minShowAnswerNum = 4;
             submitNum = 0;
             if (typeof(data) == "string"){
                 res = `提交人数未满${minShowAnswerNum}人，不显示答案`

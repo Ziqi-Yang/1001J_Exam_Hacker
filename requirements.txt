@@ -1,2 +1,2 @@
 # tencent clond serverless app limit (werkzeug <= 1.0.x) and flask changelog > v2.0.0 need werkzeug > 2
-flask==1.1.4
+flask
