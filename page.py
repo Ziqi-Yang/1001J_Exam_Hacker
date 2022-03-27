@@ -86,7 +86,7 @@ class Page:
 
         函数只是返回 allQuestions.py所需要的questionCollector
         """
-        def genOptionsForm(questionIndex:int,options:list[str]):
+        def genOptionsForm(questionIndex:int,options:list):
             res = ""
             optionIndex = 1
             for opt in options:
@@ -149,7 +149,7 @@ class Page:
         return questionsCollector
 
     @classmethod
-    def generateContent(cls,raw:str,keys:list[str]):
+    def generateContent(cls,raw:str,keys:list):
         """
         将含有关键词的区域高亮
         这个func给server.py使用，故暴露出来了(在server.py里就处理好然后传给Page.result)
@@ -177,7 +177,7 @@ class Page:
         """
         result Page
         """
-        def genSubKeyWordsBlock(subKeyWords:list[str]):
+        def genSubKeyWordsBlock(subKeyWords:list):
             res = '<span style="font-weight: bold;">次:</span>'
             for subKey in subKeyWords:
                 res += f'<span class="key">{subKey}</span>'
