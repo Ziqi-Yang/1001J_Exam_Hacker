@@ -16,6 +16,7 @@ class QuestionExtractor:
         _questions = self._form.find_all("div",{"class":"dco d2l-quiz-question-autosave-container"})
         for question in _questions:
             text = question.find("div",{"class":"drt d2l-htmlblock d2l-htmlblock-deferred"}).text
+            text  = text.strip()
             Questions[index] = text
             index += 1
 

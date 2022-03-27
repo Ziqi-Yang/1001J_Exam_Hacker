@@ -41,6 +41,7 @@ text-shadow: #816c70 1px 0 10px;
 
     display: flex;
     flex-direction: column;
+    /* justify-content: space-around; */
 }
 
 
@@ -73,7 +74,7 @@ text-shadow: #816c70 1px 0 10px;
     cursor: pointer;
 }
 
-.progress > span.forward::before {
+.progress > span.next::before {
     content: "▹";
     cursor: pointer;
 }

@@ -2,8 +2,6 @@
 import pickle
 import re
 
-
-
 class Finder:
     """
     仅针对此项目,不做通用优化
@@ -12,12 +10,12 @@ class Finder:
         self.DATA = data
 
 
-    def find(self,keyWord:str,subKeywords=[],mustIncludeSubKey=True,bestN=6):
+    def find(self,keyWord:str,subKeywords=[],mustIncludeSubKey=False,bestN=6):
         """
         不区分大小写
 
         keyWord: 必须要包含的关键字
-        subKeyWords: 可选择关键字,对keyWords搜索到底内容进行打分
+        subKeywords: 可选择关键字,对keyWords搜索到底内容进行打分
                 比如共有5个子关键字,每含有一个就加1/5分
                 没子关键字表示每个都1分(满分)
         mustIncludeSubKey: (如果有subKeyWords),是否至少要包含一个subKey
@@ -35,24 +33,24 @@ class Finder:
                     content = f"#{self.DATA[dn][fn][p]}#"
                     if re.search(rf"\W+{re.escape(keyWord)}\W+",content,re.I) != None:
                         for key in subKeywords:
-                            key = key.lower()
                             if re.search(rf"\W+{re.escape(key)}\W+",content,re.I) != None:
                                 score += 1/len(subKeywords)
                         if len(subKeywords) == 0:
                             score = 1
 
                         score = round(score,2)
-                        result.append((score,dn,fn,p,content))
+                        content = content[1:-1]
+                        result.append([score,dn,fn,p,content]) # 不用元组是因为server.py里修改了
                         score = 0
 
-                    content = content[1:-1]
 
         result = sorted(result,key=lambda x:x[0], reverse=True)
         if mustIncludeSubKey == True:
             result = [res for res in result if res[0] != 0 ]
         if bestN != None and bestN < len(result) and bestN >= 1:
             n = bestN + 1
-            if n <= len(result) and result[bestN - 1][0] == result[n - 1][0] :
+            if n <= len(result) and result[n-1] != 0 and result[bestN - 1][0] == result[n - 1][0]:
+                # 若得分为0,则不再深入,防止出现太多
                 n += 1
             n -= 1
             return result[:n]
@@ -70,4 +68,4 @@ if __name__ == '__main__':
     finder = Finder(DATA)
 
     from pprint import pprint
-    pprint(finder.find("When You Are Old",["soft","ie"],bestN=4,mustIncludeSubKey=False))
+    pprint(finder.find("When You Are Old",[],bestN=4))

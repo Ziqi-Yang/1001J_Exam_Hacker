@@ -29,5 +29,4 @@ if __name__ == '__main__':
     preProcess()
     DATA = loadData()
     server = Server(DATA)
-    server.search("cooking",["pots","site"],bestN=1,mustIncludeSubKey=False)
-    server.run(debug=True)
+    server.run(host="0.0.0.0",port=9000) # 腾讯云serverless配置

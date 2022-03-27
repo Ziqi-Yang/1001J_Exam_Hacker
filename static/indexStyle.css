@@ -15,7 +15,21 @@ font-size: 3em;
 font-weight: bold;
 margin-top: 0px;
 margin-bottom: 0;
+text-shadow: #816c70 1px 0 10px;
 /* margin-left: .2em; */
+}
+
+img {
+    border: dotted;
+    border-radius: 1em;
+    width: 80%;
+    margin: 1em 0;
+}
+
+div.guide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .htmlPasteBox {
@@ -30,4 +44,8 @@ margin-bottom: 0;
 
 .guide {
     margin-top: 1em;
+}
+
+#example {
+    margin: .5em 0;
 }

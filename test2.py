@@ -1,4 +1,2 @@
-import re
-a =  "123asd$"
-
-print(re.escape(a))
+a = [0,0,0]
+print(len([x for x in a if x !=0]))

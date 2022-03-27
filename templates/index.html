@@ -5,20 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/indexStyle.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>1001J EXAM HACKER</title>
 </head>
 <body>
     <h1>1001J EXAM HACKER</h1>
     <!-- NOTICE 更改action地址 -->
-    <form action="http://127.0.0.1:5000" method="post" class="htmlPasteBox">
+    <form action="/" method="post" class="htmlPasteBox">
         <label for="html">请在这里粘贴html代码</label>
         <br>
         <textarea name="html" id="html" cols="150" rows="20" placeholder='<html data-userprofile-context="{hasPro...}...">...'></textarea>
         <br>
         <input type="submit" value="提交"></input>
     </form>
+    <button id="example">示例</button>
     <div class="guide">
-        首先我们需要。。。
+        <h2>特性</h2>
+        <div>
+            <ul>
+                <li>解析考试网页界面,得到所有问题</li>
+                <li>数据来源:提取所有1001J课程每周发的pdf文档,若遇到pdf中图片,ocr转图片为文字</li>
+                <li>多人答案互助</li>
+                <li>便捷的搜索页面</li>
+            </ul>
+        </div>
+        <h2>页面展示</h2>
+        <img src="../static/allQuestionPage.png" alt="allQuestionPage">
+        <img src="../static/resultPage.png" alt="resultPage">
+        <h2>教程</h2>
+        <div>按 `Fn`键 + `F12`键 呼出 控制台</div>
+        <img src="../static/guide_1.png" alt="guide">
+        <div>找到上方第一次出现类似这个区域的地方</div>
+        <img src="../static/guide_2.png" alt="guide">
+        <img src="../static/guide_3.png" alt="guide">
+        <h2>参数说明</h2>
+        <div>点击搜索会结合关键字发起搜索。一个主要关键字将配合所有次要关键字。主要关键字必须包含。次要关键字影响搜索结果得分。在搜索结果界面会展示四个搜索结果方格（四个主要关键字）。</div>
+        <img src="../static/description_1.png" alt="description">
+        <img src="../static/resultPage.png" alt="description">
+        <img src="../static/description_2.png" alt="description">
+        <h2>告知</h2>
+        <div>
+            <ul>
+                <li>每人对于每道题只能提供一次答案，虽然后端已经设置，但是在网页明文告知</li>
+                <li>只有每个题提交答案数量超过4人次时才能显示共享的答案</li>
+                <li>合力互助过考试，拒绝异端人士</li>
+            </ul>
+        </div>
+        <h2>声明</h2>
+        <div>我也不知道开发者是谁</div>
     </div>
+
+    <script src="../static/indexScript_exampleCode.js"></script>
+    <script>
+        $("#example").click(function(){
+            $("#html").val(exampleCode);
+        });
+    </script>
 </body>
 </html>

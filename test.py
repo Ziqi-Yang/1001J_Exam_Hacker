@@ -17,8 +17,9 @@ def generateContent(raw:str,keys:list[str]):
     content = content[1:-1]
     for key in substitutionKeys:
         content = content.replace(key,substitution[key])
+    content = content.replace("\n","<br>")
     return content
 
-raw = """Landscape During the glacial period [the Ice Age] in Ireland, the island was covered with layers of ice that could be 1km thick. As this ice began to melt, slow-moving glaciers physically carved [cut up] the landscape. The monastery of Glendalough is situated in a glacial valley in county Wicklow. The monastery itself (its churches and round tower) was founded [built] on a glacial deposit of hard earth, soil and gravel [small stones]. This earth was originally dug up and pushed before a glacier as it passed through this landscape. What is the name given to these deposits of earth highlight left behind by glaciers? landscape"""
+raw = """Landscape During the glacial period [the Ice Age] in Ireland, the island was covered with layers of ice that could be 1km thick. As this ice began to melt, slow-moving glaciers physically carved [cut up] the landscape. The monastery of Glendalough is situated in a glacial valley in county Wicklow. The monastery itself (its churches and round tower) was founded [built] on a glacial deposit of hard earth, soil and gravel [small stones]. This earth was originally dug up and pushed before a glacier as it passed through this landscape. What is the name given to these deposits of earth highlight left behind by glaciers? \nlandscape"""
 
 print(generateContent(raw,["landscape","highlight","what"]))

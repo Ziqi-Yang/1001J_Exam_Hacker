@@ -11,11 +11,57 @@
 <body>
   <h1>Result</h1>
   <div class="container">
-    {{results}}
+    {{resultsContainer | safe}}
+  </div>
   <script>
+    {{resultsJS | safe}}
+  </script>
+  <script>
+    changeRes = function(element,command){
+      singleResultDiv = element.parents("div.singleResult");
+
+      id = singleResultDiv.attr("id");
+      key = results["ids"][id];
+      thisResults = results[key];
+
+      totalRes = thisResults.length;
+      currentIndex = parseInt(singleResultDiv.find("span.current").text()); // NOTICE html中显示是按从1开始的
+      if (command == "next"){
+        currentIndex++
+        if (currentIndex == totalRes + 1){
+          currentIndex = 1;
+        }
+      } else if (command == "back"){
+        currentIndex--
+        if (currentIndex == 0) {
+          currentIndex = totalRes;
+        }
+      }
+
+      // change content
+      currentRes = thisResults[currentIndex - 1];
+      
+      score = currentRes[0];
+      folderName = currentRes[1];
+      fileName = currentRes[2];
+      // 这里不够优雅，最好直接在python里处理，这样js改变的html和python的第一次显示html就一致了
+      fileNameOmitted = fileName.length < 28 ? fileName : fileName.substring(0,25) + "..."
+      pageNum = currentRes[3];
+      // generate file information
+      file =  `${folderName}/${fileNameOmitted} - P${pageNum}`;
+      // change inforamtion
+      singleResultDiv.find(".file").html(file);
+      singleResultDiv.find(".score").html(score);
+      singleResultDiv.find(".current").html(currentIndex);
+      // change content
+      singleResultDiv.find(".resultArea").html(currentRes[4]);
+    };
+    
     $("span.back").click(function(){
-      singleResultDiv = $(this).parents("div.singleResult");
-      console.log(singleResultDiv);
+      changeRes($(this),"back");
+    });
+    $("span.next").click(function(){
+      changeRes($(this),"next");
     });
   </script>
 </body>
