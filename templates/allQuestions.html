@@ -45,16 +45,17 @@
         $.get(`/preAttempts/${qhash}`,function(data){
             // console.log(data);
             res = "选项: 选择人数\n";
+            minShowAnswerNum = 4;
             submitNum = 0;
             if (typeof(data) == "string"){
-                res = "提交人数未满4人，不显示答案"
+                res = `提交人数未满${minShowAnswerNum}人，不显示答案`
             } else { // json
                 for (var key in data){
                     submitNum += data[key];
                     res += `${key}: ${data[key]}\n`;
                 }
-                if (submitNum < 4){
-                    res = "提交人数未满4人，不显示答案"
+                if (submitNum < minShowAnswerNum){
+                    res = `提交人数未满${minShowAnswerNum}人，不显示答案`
                 }
             }
             alert(res);
