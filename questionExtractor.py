@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from bs4 import BeautifulSoup
+import hashlib
 
 class QuestionExtractor:
     def __init__(self,html):
@@ -49,7 +50,8 @@ class QuestionExtractor:
         for key in questions.keys():
             question = questions[key]
             option = options[key]
-            qhash = str(hash(question))
+            # qhash = str(hash(question))
+            qhash = hashlib.md5(question.encode()).hexdigest()
             result[key] = {"qhash": qhash, "question": question, "options": option}
 
         return result
